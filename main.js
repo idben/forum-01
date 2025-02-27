@@ -55,7 +55,9 @@ document.body.addEventListener("click", async e => {
     if(commentInput){
       commentInput.remove();
     }
-    if(level >=2) return; // 控制可回覆層數
+    console.log({level});
+    
+    if(level >= 2) return; // 控制可回覆層數
     parent.innerHTML += `<div class="comment-input">
                           <input type="text" name="comment" placeholder="填入留言">
                           <input type="text" name="user-name" placeholder="填入名稱">
@@ -92,7 +94,7 @@ document.body.addEventListener("click", async e => {
       temp["post_id"] = parseInt(postId);
     }
     if(parentId != null){
-      temp["parent_id"] = parseInt(postId);
+      temp["parent_id"] = parseInt(parentId);
     }
     temp["content"] = content;
     temp["created_at"] = Date.now();
@@ -105,7 +107,7 @@ document.body.addEventListener("click", async e => {
       return;
     }
     // 加到回覆區
-    parent.innerHTML += `<div class="comment-box comment-box${level}" data-level="${level}" data-id="${temp.id}" data-postid="${temp.post_id}">
+    parent.innerHTML += `<div class="comment-box comment-box${level+1}" data-level="${level+1}" data-id="${temp.id}" data-postid="${temp.post_id}">
                           <div class="comment">
                             <strong>${temp.user_name}:</strong> ${temp.content}
                           </div>
