@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "user_name": "Mary",
+    "post_id": 1,
+    "parent_id": null,
+    "content": "回覆回覆，我是一樓",
+    "created_at": 1740623875130
+  },
+  {
+    "id": 2,
+    "user_name": "John",
+    "post_id": 1,
+    "parent_id": null,
+    "content": "回覆回覆，我是二樓",
+    "created_at": 1740623875130
+  },
+  {
+    "id": 3,
+    "user_name": "May",
+    "post_id": 1,
+    "parent_id": 1,
+    "content": "一樓之一在這裡",
+    "created_at": 1740623937634
+  },
+  {
+    "id": 4,
+    "user_name": "Paul",
+    "post_id": 1,
+    "parent_id": 1,
+    "content": "一樓之2在這裡",
+    "created_at": 1740623937634
+  },
+  {
+    "id": 5,
+    "user_name": "Ben",
+    "post_id": 1,
+    "parent_id": 2,
+    "content": "Paul 你好呀",
+    "created_at": 1740623999395
+  },
+  {
+    "id": 6,
+    "user_name": "Mary",
+    "post_id": 2,
+    "parent_id": null,
+    "content": "我沒有看，所以才能贏球",
+    "created_at": 1740624481278
+  },
+  {
+    "id": 5,
+    "user_name": "John",
+    "post_id": 1,
+    "parent_id": 2,
+    "content": "Ben，你回錯樓了",
+    "created_at": 1740624587605
+  },
+  {
+    "id": 6,
+    "user_name": "Coby",
+    "post_id": 1,
+    "parent_id": null,
+    "content": "我也來了",
+    "created_at": 1740631461641
+  },
+  {
+    "id": 7,
+    "user_name": "Ben",
+    "post_id": 1,
+    "parent_id": 6,
+    "content": "你好, Coby",
+    "created_at": 1740631494371
+  },
+  {
+    "id": 8,
+    "user_name": "Coby",
+    "post_id": 1,
+    "parent_id": 6,
+    "content": "要不要約吃飯",
+    "created_at": 1740631698196
+  },
+  {
+    "id": 9,
+    "user_name": "Ben",
+    "post_id": 1,
+    "parent_id": 6,
+    "content": "走，何時？",
+    "created_at": 1740632071530
+  },
+  {
+    "id": 10,
+    "user_name": "Coby",
+    "post_id": 1,
+    "parent_id": 6,
+    "content": "吃什麼？",
+    "created_at": 1740632110668
+  },
+  {
+    "id": 11,
+    "user_name": "Ben",
+    "post_id": 1,
+    "parent_id": 6,
+    "content": "小肥羊？",
+    "created_at": 1740632195661
+  },
+  {
+    "id": 12,
+    "user_name": "Ben",
+    "post_id": 1,
+    "parent_id": 6,
+    "content": "這週日？",
+    "created_at": 1740632231852
+  },
+  {
+    "id": 13,
+    "user_name": "Coby",
+    "post_id": 1,
+    "parent_id": 6,
+    "content": "Ben 沒問題",
+    "created_at": 1740632298477
+  }
+]
