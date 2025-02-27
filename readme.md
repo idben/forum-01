@@ -18,7 +18,7 @@
 
 ## 依賴 function
 * `buildCommentTree`，建立留言樹狀結構
-* `renderComments`，生成留言 HTML，會使用遞來迴渲染子留言
+* `renderComments`，生成留言 HTML，會使用遞迴來渲染子留言
 
 ## 展示網址
 * [展示網址](https://idben.github.io/forum-01/)
