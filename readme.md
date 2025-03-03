@@ -22,3 +22,7 @@
 
 ## 展示網址
 * [展示網址](https://idben.github.io/forum-01/)
+
+## branch
+* `main`: 單純的 html 和 js 把 json 資料跑遞迴顯示所有內容
+* `clickInTo`: 單純的 html 和 js，主頁只顯示 post，點擊進入次頁才會有回覆
