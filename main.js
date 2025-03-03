@@ -1,5 +1,11 @@
 const container = document.querySelector("#posts-container");
 
+// 取得查詢參數 postID
+const urlString = location.href;
+const url = new URL(urlString);
+const postid = url.searchParams.get("id");
+
+
 // AJAX 取得 JSON 資料
 const response1 = await fetch('./post.json');
 const posts = await response1.json();
@@ -7,21 +13,35 @@ const response2 = await fetch('./comment.json');
 const comments = await response2.json();
 
 container.innerHTML = ""; // 清空留言版
-posts.forEach(post => {
+if(!postid){
+  posts.forEach(post => {
+    container.innerHTML += `
+      <div class="post" data-postid="${post.id}">
+        <div class="post-title">${post.user_name}: ${post.content}</div>
+      </div>
+    `;
+  });
+}else{
+  const post = posts.find(p => p.id == postid);
   // 依照主留言的資料陣列繪製主留言區塊
   const relatedComments = comments.filter(c => c.post_id === post.id);
   const commentTree = buildCommentTree(relatedComments);
   container.innerHTML += `
     <div class="post" data-postid="${post.id}">
-      <div class="post-title">${post.user_name}: ${post.content}</div>
+      <div class="post-title">${post.user_name}: ${post.content} <button class="btn-back">回上一頁</button></div>
       ${renderComments(commentTree)} <!-- 繪製回覆 -->
     </div>
   `;
-});
+}
+
+
 
 document.body.addEventListener("click", async e => {
   let commentInput = document.querySelector(".comment-input");
   if(e.target.tagName == "BODY"){
+    if(!postid){
+      return;
+    }
     // 如果在非留言或非回覆區按一下，在最上方放留言的輸入欄位
     if(commentInput){
       commentInput.remove();
@@ -34,9 +54,13 @@ document.body.addEventListener("click", async e => {
     e.currentTarget.prepend(node);
     
   }else if(e.target.classList.contains("post-title")){
-    // 如果在主留言區按一下，在第一樓的回覆下方放留言的輸入欄位
     const parent = e.target.closest(".post");
     const postId = parseInt(parent.dataset.postid, 10);
+    if(!postid){
+      window.location.href = `/index.html?id=${postId}`;
+      return;
+    }
+    // 如果在主留言區按一下，在第一樓的回覆下方放留言的輸入欄位
     if(commentInput){
       commentInput.remove();
     }
@@ -47,6 +71,9 @@ document.body.addEventListener("click", async e => {
                           <button class="btn-send">送出</button>
                         </div>`;
   }else if(e.target.classList.contains("comment")){
+    if(!postid){
+      return;
+    }
     // 如果在回覆區按一下，在第一樓的回覆下方放留言的輸入欄位
     const parent = e.target.closest(".comment-box");
     const level = parseInt(parent.dataset.level, 10);
@@ -112,6 +139,8 @@ document.body.addEventListener("click", async e => {
                             <strong>${temp.user_name}:</strong> ${temp.content}
                           </div>
                         </div>`;
+  }else if(e.target.classList.contains("btn-back")){
+    window.history.back();
   }
 })
 
